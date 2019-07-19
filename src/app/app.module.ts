@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { TodoService } from './service/todo.service';
 
 const fb = {
@@ -33,7 +33,7 @@ const fb = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // AppRoutingModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(fb)
   ],
   providers: [

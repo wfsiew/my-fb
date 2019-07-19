@@ -18,10 +18,16 @@ MIT
 @firebase/app
 Apache-2.0
 
+@firebase/firestore
+Apache-2.0
+
 @firebase/logger
 Apache-2.0
 
 @firebase/util
+Apache-2.0
+
+@firebase/webchannel-wrapper
 Apache-2.0
 
 angular-font-awesome
@@ -76,6 +82,8 @@ THE SOFTWARE.
 
 
 firebase/app
+
+firebase/firestore
 
 lodash
 MIT
