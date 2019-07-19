@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div *ngIf = "isSpin" class="text-center">
+        <div class="spinner-grow text-danger" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let o of tasks" class="list-group-item animated fadeIn">
+        <!-- {{o.payload.doc.data().task}} -->
+                {{o.task}}
+        <!-- o.payload.doc.id -->
+            <a class="float-right text-danger" (click)="deleteTask(o.id)">Delete</a>
+        </li>
+    </ul>
+</div>
