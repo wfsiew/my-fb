@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-// import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
 import { TodoService } from '../service/todo.service';
 @Component({
@@ -14,7 +14,7 @@ export class InputComponent implements OnInit {
   isSaved = false;
   isSpin = false;
   constructor(
-    // private db: AngularFirestore,
+    private db: AngularFirestore,
     private fb: FormBuilder,
     private http: HttpClient,
     private todoService: TodoService
@@ -25,6 +25,7 @@ export class InputComponent implements OnInit {
     this.createForm();
     this.getTasks();
   }
+
   createForm() {
     this.formgroup = this.fb.group(
       {
@@ -36,29 +37,31 @@ export class InputComponent implements OnInit {
   }
 
   addTask(data) {
-    // this.isSpin = true;
-    // this.db.collection('todo').add(data).then((res) => {
-    //   
-    //   this.isSpin = false;
-    // }, er => {
-    //   console.log(er);
-    // });
-    this.todoService.addTask(data);
-    this.resetForm();
-    this.getTasks();
-    this.isSaved = false;
+    this.isSpin = true;
+    this.db.collection('todo').add(data).then((res) => {
+      this.isSpin = false;
+      this.getTasks();
+      this.resetForm();
+    }, er => {
+      console.log(er);
+    });
+    // this.todoService.addTask(data);
+    // this.resetForm();
+    // this.getTasks();
+    // this.isSaved = false;
   }
 
   getTasks() {
-    // this.todoService.getTask().then((res) => {
-    //   this.tasks = res;
-    // });
-    this.tasks = JSON.parse(this.todoService.getTodo());
+    this.todoService.getTask().then((res) => {
+      this.tasks = res;
+    });
+    // this.tasks = JSON.parse(this.todoService.getTodo());
   }
 
   countChangedHandler(count) {
     this.getTasks();
   }
+
   resetForm() {
     this.isSaved = true;
     this.formgroup.reset();

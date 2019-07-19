@@ -6,7 +6,7 @@ import { TodoService, Item } from '../service/todo.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Output() countChanged: EventEmitter<number> =   new EventEmitter();
+  @Output() countChanged: EventEmitter<number> = new EventEmitter();
   @Input() tasks: Item;
   isSpin = false;
   constructor(
@@ -17,14 +17,14 @@ export class ListComponent implements OnInit {
 
   deleteTask(id) {
     this.isSpin = true;
-    // this.todoService.deleteTask(id)
-    // .then((res) => {
-    //   this.isSpin = false;
-    //   },
-    //   err => {
-      //     console.log(err);
-      //   });
-    this.todoService.deleteTasks(id);
+    this.todoService.deleteTask(id)
+    .then((res) => {
+      this.isSpin = false;
+      },
+      err => {
+          console.log(err);
+        });
+    // this.todoService.deleteTasks(id);
     this.countChanged.emit(11);
     this.isSpin = false;
   }

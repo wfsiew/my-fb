@@ -6,10 +6,9 @@
     </div>
     <ul class="list-group list-group-flush">
         <li *ngFor="let o of tasks" class="list-group-item animated fadeIn">
-        <!-- {{o.payload.doc.data().task}} -->
-                {{o.task}}
-        <!-- o.payload.doc.id -->
-            <a class="float-right text-danger" (click)="deleteTask(o.id)">Delete</a>
+          {{o.payload.doc.data().task}}
+                <!-- {{o.task}} -->
+            <a class="float-right text-danger" (click)="deleteTask(o.payload.doc.id)">Delete</a>
         </li>
     </ul>
 </div>
